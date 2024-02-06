@@ -3,7 +3,7 @@ const Footer = () => {
     return ( 
     <div className="bg-gray-800 w-full flex p-6  ">
     <div className="flex flex-col w-2/6 items-center gap-3 mx-2 my-6">
-        <p className="text-white font-bold">About Us</p>
+        <p className="text-white font-bold">About SocialSphere</p>
         <p className="text-gray-500 text-sm">Do you want to be even more successful? Learn to love learning and growth. The more effort you put into improving your skills,</p>
         <p className="text-gray-500 text-sm">Copyright ©2024 All rights reserved | This template is made with  by Colorlib</p>
 
@@ -21,7 +21,7 @@ const Footer = () => {
     </div>
     </div>
     <div className="flex flex-col w-1/6 items-center gap-3 mx-2 my-6">
-    <p className="text-white font-bold">Follow Us</p>
+    <p className="text-white font-bold">Follow SocialSphere</p>
     <p className="text-gray-500 text-sm">className</p>
     </div>
     </div>

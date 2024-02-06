@@ -1,3 +1,7 @@
+export interface IShortUser {
+  id: number;
+  username: string;
+}
 
   export interface IUser {
     id: number;
@@ -15,6 +19,14 @@ export interface IPost{
     tags:string[];
     reactions:number;
     user:IUser;
+}
+
+export interface IComment {
+  id: number;
+  postId: number;
+  body: string;
+  user: IShortUser;
+  userData: IUser;
 }
 
 
@@ -43,6 +55,22 @@ export interface IUsers{
     type: string;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+// export interface IContextProps {
+//   state: IState;
+//   dispatch: ({type}:{type:string}) => void;
+// }
 
 
 

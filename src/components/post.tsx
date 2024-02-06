@@ -78,7 +78,7 @@ export const Post: React.FC<props> = ({ post, disableShowMore = false }) => {
           </Menu>
         </div>
       </div>
-      <p className="text-sm text-gray-500 my-4">{post.body}</p>
+      <p className={`text-sm text-gray-500 my-4 ${!disableShowMore ? 'truncate' : ''}`}>{post.body}</p>
       <div className="inline-flex items-center gap-x-1">
         <svg
           xmlns="http://www.w3.org/2000/svg"

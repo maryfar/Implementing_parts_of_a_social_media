@@ -1,15 +1,16 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { IUsers } from "../type"
 import { fetchUsers } from "../apis/users.api";
 import { UserInfo } from "../components/user";
 import { UserSkeleton } from "../components/user.skeletun";
+import { AppContext } from "../App";
 
 
 
 
 export  const UserInfoContainer =()=>{
     const [UsersList,setUserList] =useState <IUsers[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
+    const { setLoading,loading} = useContext(AppContext)
     
 
 const fetchData = async ()=>{

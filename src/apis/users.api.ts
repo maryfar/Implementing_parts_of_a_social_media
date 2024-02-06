@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IUsers } from "../type";
+import { IUser, IUsers } from "../type";
 
 
 type fetchPostFuncType = () => Promise<IUsers[]>;
@@ -10,3 +10,12 @@ export const fetchUsers:fetchPostFuncType = async()=>{
     }
     return response.data.users
 }
+
+
+
+type fetchUserByIdFuncType = (_: number) => Promise<IUser>;
+export const fetchUserById: fetchUserByIdFuncType = async (id: number) => {
+  const response = await fetch(`https://dummyjson.com/users/${id}`);
+  const data = await response.json();
+  return data;
+};

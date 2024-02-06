@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { fetchPosts } from "../apis/post.api";
 import { IPost } from "../type";
 import { Post, PostSkeleton } from "../components/post";
+import { AppContext } from "../App";
 
 export const PostListContainer = () => {
   const [postsList, setPostsList] = useState<IPost[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+ const { setLoading,loading} = useContext(AppContext)
 
   const fetchData = async () => {
     try {

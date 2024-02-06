@@ -1,18 +1,29 @@
-/* This example requires Tailwind CSS v2.0+ */
 import { Disclosure } from "@headlessui/react";
 import { classNames } from "../utils/tools";
 import { HiBars3 } from "react-icons/hi2";
 import { HiOutlineXMark } from "react-icons/hi2";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
-const navigation = [
-  { name: "Home", href: "/", current: true },
-  { name: "Posts", href: "/posts", current: false },
-  { name: "Users", href: "/users", current: false },
-  { name: "Post", href: "/post", current: false },
-];
 
 export function Navbar() {
+
+  const [current, setCurrentTab] = useState<boolean>(false)
+
+  const navigation = [
+    { name: "Home", href: "/", current: current },
+    { name: "Posts", href: "/posts", current: current  },
+    { name: "Users", href: "/users", current: current },
+    { name: "Post", href: "/post", current: current },
+  ];
+
+  const handleTabClick = ():void => {
+    setCurrentTab(prev=>!prev);
+  };
+
+
+
+
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -33,16 +44,13 @@ export function Navbar() {
                     src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
                     alt="Workflow"
                   />
-                  <img
-                    className="hidden lg:block h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
-                    alt="Workflow"
-                  />
+                  <a className="hidden lg:block h-8 w-auto font-bold text-white text-2xl">SocialSphere</a>
                 </div>
-                <div className="hidden sm:block sm:ml-6">
-                  <div className="flex space-x-4">
+                <div className="hidden sm:block sm:ml-8 ">
+                  <div className="flex space-x-4  ">
                     {navigation.map((item) => (
                       <a
+                      onClick={handleTabClick}
                         key={item.name}
                         href={item.href}
                         className={classNames(
@@ -67,6 +75,7 @@ export function Navbar() {
               {navigation.map((item) => (
                 <Disclosure.Button
                   key={item.name}
+                  onClick={handleTabClick}
                   className={classNames(
                     item.current
                       ? "bg-gray-900 text-white"
