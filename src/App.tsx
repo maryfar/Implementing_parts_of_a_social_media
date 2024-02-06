@@ -13,6 +13,7 @@ import { NotFoundPage } from "./pages/404";
 import { PostPage, postPageLoader } from "./pages/post";
 import { ErrorBoundary } from "./pages/errorBoundry";
 import { PostCommentsContainer, postCommentsContainerLoader } from "./containers/post-comments";
+import { UserPages, userPageLoader } from "./pages/user";
 
 
 const router = createBrowserRouter(
@@ -33,6 +34,11 @@ const router = createBrowserRouter(
         />
       </Route>
       <Route path="users" element={<UsersPage/>} />
+      <Route
+        path="users/:userId"
+        element={<UserPages/>}
+        loader={userPageLoader}
+      ></Route>
       <Route path="*" element={<NotFoundPage />} />
     </Route>
   )
