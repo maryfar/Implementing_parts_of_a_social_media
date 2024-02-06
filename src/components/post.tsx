@@ -1,8 +1,7 @@
-import { Fragment } from "react";
-import { Menu, Transition } from "@headlessui/react";
-import { classNames } from "../utils/tools";
+
 import { Link } from "react-router-dom";
-import { IPost  } from "../type";
+import { IPost } from "../type";
+import { Dropdown } from "flowbite-react";
 
 type props = { post: IPost; disableShowMore?: boolean };
 export const Post: React.FC<props> = ({ post, disableShowMore = false }) => {
@@ -24,61 +23,39 @@ export const Post: React.FC<props> = ({ post, disableShowMore = false }) => {
             December 9 at 11:43 AM
           </p>
         </div>
-        <div className="flex-shrink-0 self-center flex">
-          <Menu as="div" className="relative z-30 inline-block text-left">
-            <div>
-              <Menu.Button className="-m-2 p-2 rounded-full flex items-center text-gray-400 hover:text-gray-600">
-                <span className="sr-only">Open options</span>
-                <svg
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  className="h-5 w-5"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  ></path>
-                </svg>
-              </Menu.Button>
-            </div>
-
-            <Transition
-              as={Fragment}
-              enter="transition ease-out duration-100"
-              enterFrom="transform opacity-0 scale-95"
-              enterTo="transform opacity-100 scale-100"
-              leave="transition ease-in duration-75"
-              leaveFrom="transform opacity-100 scale-100"
-              leaveTo="transform opacity-0 scale-95"
+        <div className="flex justify-end px-4 pt-4">
+        <Dropdown inline label="">
+          <Dropdown.Item>
+            <a
+              href="#"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
             >
-              <Menu.Items className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                <div className="py-1">
-                  {post.tags.map((tag, index) => (
-                    <Menu.Item key={index}>
-                      {({ active }) => (
-                        <p
-                          className={classNames(
-                            active
-                              ? "bg-gray-100 text-gray-900"
-                              : "text-gray-700",
-                            "flex px-4 py-2 text-sm capitalize"
-                          )}
-                        >
-                          {tag}
-                        </p>
-                      )}
-                    </Menu.Item>
-                  ))}
-                </div>
-              </Menu.Items>
-            </Transition>
-          </Menu>
-        </div>
+              Follow
+            </a>
+          </Dropdown.Item>
+          <Dropdown.Item>
+            <a
+              href="#"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
+            >
+              Save
+            </a>
+          </Dropdown.Item>
+          <Dropdown.Item>
+            <a
+              href="#"
+              className="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
+            >
+              Unfollow
+            </a>
+          </Dropdown.Item>
+        </Dropdown>
+      </div>
       </div>
       <p className={`text-sm text-gray-500 my-4 ${!disableShowMore ? 'truncate' : ''}`}>{post.body}</p>
+      <div className="flex gap-2">
+        {post.tags.map(tag => <p className="bg-gray-400 text-white rounded-3xl p-1 text-sm font-thin text-center mb-2">{tag}</p>)}
+      </div>
       <div className="inline-flex items-center gap-x-1">
         <svg
           xmlns="http://www.w3.org/2000/svg"

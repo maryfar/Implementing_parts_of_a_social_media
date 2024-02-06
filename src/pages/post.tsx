@@ -31,7 +31,7 @@ import {
   
   export const postPageLoader = async (data: LoaderFunctionArgs) => {
     const post = await fetchPostInfo(Number(data.params.postId));
-    post.user = await fetchUserById(post.userid);
+    post.user = await fetchUserById(post.userId);
     return post;
   };
   

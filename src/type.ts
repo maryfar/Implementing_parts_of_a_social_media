@@ -13,12 +13,12 @@ export interface IShortUser {
   }
 export interface IPost{
     id: number;
-    userid:number;
+    userId:number;
     title:string;
     body:string;
     tags:string[];
     reactions:number;
-    user:IUser;
+    user?:IUser;
 }
 
 export interface IComment {

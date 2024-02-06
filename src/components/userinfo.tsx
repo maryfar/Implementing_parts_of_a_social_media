@@ -20,7 +20,7 @@ export const UserPage: React.FC<props> = ({ user }) => {
         />
         <h5 className="my-2 text-xl font-medium text-gray-900 dark:text-white">{user.firstName}</h5>
 
-        <div className='grid md:grid-cols-2  grid-cols-1 border rounded-md p-3 bg-slate-200 space-x-4 space-y-2 w-full'>
+        <div className='grid md:grid-cols-2  grid-cols-1 border rounded-md p-3 bg-slate-200 gap-x-6 gap-y-2 w-full'>
           <span className="text-sm text-gray-700 dark:text-gray-400">Gender: {user.gender}</span>
           <span className="text-sm text-gray-700 dark:text-gray-400">Age: {user.age}</span>
           <span className="text-sm text-gray-700 dark:text-gray-400">BirthDate: {user.birthDate}</span>

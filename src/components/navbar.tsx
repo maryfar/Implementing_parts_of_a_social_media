@@ -14,7 +14,7 @@ export function Navbar() {
     { name: "Home", href: "/", current: current },
     { name: "Posts", href: "/posts", current: current  },
     { name: "Users", href: "/users", current: current },
-    { name: "Post", href: "/post", current: current },
+   
   ];
 
   const handleTabClick = ():void => {

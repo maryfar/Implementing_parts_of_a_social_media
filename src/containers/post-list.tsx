@@ -3,21 +3,23 @@ import { fetchPosts } from "../apis/post.api";
 import { IPost } from "../type";
 import { Post, PostSkeleton } from "../components/post";
 import { AppContext } from "../App";
+import { fetchUserById } from "../apis/users.api";
 
 export const PostListContainer = () => {
   const [postsList, setPostsList] = useState<IPost[]>([]);
  const { setLoading,loading} = useContext(AppContext)
 
-  const fetchData = async () => {
-    try {
-      let posts: IPost[] = await fetchPosts();
-      setPostsList(posts);
-      setLoading(false);
-    } catch (error) {
-      console.error("Error fetching posts:", error);
-     
-    }
-  };
+ const fetchData = async () => {
+  let posts: IPost[] = await fetchPosts();
+  posts = await Promise.all(
+    posts.map(async (pst) => ({
+      ...pst,
+      user: await fetchUserById(pst.userId),
+    }))
+  );
+  setPostsList(posts);
+  setLoading(false);
+};
 
   useEffect(() => {
     if (!loading) return;
